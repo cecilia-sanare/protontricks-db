@@ -24,16 +24,11 @@ in
     systemd.services.protontweaks = mkIf (cfg.watch.enable) {
       enable = true;
       description = "Protontweaks Watch Service";
-      unitConfig = {
-        Type = "simple";
-        # ...
-      };
       serviceConfig = {
+        Type = "simple";
         ExecStart = "${pkgs.protontweaks}/bin/protontweaks watch";
-        # ...
       };
       wantedBy = [ "multi-user.target" ];
-      # ...
     };
   };
 }
